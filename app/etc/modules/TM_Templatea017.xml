@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   TM
+ * @package    TM_Template
+ * @author     ModuleCreator
+  */
+ -->
+<config>
+    <modules>
+        <TM_Templatea017>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <TM_Easyslide />
+            </depends>
+        </TM_Templatea017>
+    </modules>
+</config> 

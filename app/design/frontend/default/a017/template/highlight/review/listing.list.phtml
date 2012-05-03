@@ -1,0 +1,39 @@
+<?php if (($_products = $this->getProductCollection()) && $_collectionSize = $_products->getSize()): ?>
+<div class="block block-highlight highlight-review-recent">
+    <div class="block-title"><span><?php echo $this->__($this->getTitle()) ?></span></div>
+    <div class="block-content">
+    <?php $i = 0; foreach ($_products->getItems() as $_product): ?>
+    <ol class="products-list">
+        <li class="item">
+            <h4>
+                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>">
+                    <span class="product-image">
+                        <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135, 135); ?>" width="135" height="135" alt="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" title="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" />
+                    </span>
+                </a>
+            </h4>
+            
+            <?php // Product description ?>
+            <div class="product-shop">
+            <div class="f-fix">
+                <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><?php echo $this->htmlEscape($_product->getName())?></a></h2>
+                <div class="desc std">
+                    <?php echo nl2br($this->htmlEscape(substr($_product->getDetail(), 0, 120)) . '...') ?>
+                    <a href="<?php echo $this->getReviewUrl($_product->getReviewId()) ?>"><?php echo $this->__('Read review') ?></a>
+                </div>
+                <ul class="add-to-links">
+                    <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                        <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist" rel="nofollow"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                    <?php endif; ?>
+                    <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                         <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare" rel="nofollow"><?php echo $this->__('Add to Compare') ?></a></li>
+                    <?php endif; ?>
+                </ul>
+            </div>
+            </div>
+        </li>
+    </ol>
+    <?php endforeach; ?>
+    </div>
+</div>
+<?php endif; ?>

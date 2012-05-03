@@ -1,0 +1,223 @@
+<?php 
+$move = Mage::getModel('featured/featured')->load(1);
+$featuredProducts = $move->getNo_of_featured();
+$movement =  $move->getMove();
+$type = $move->getType();
+/*
+* CALL THE FUNCTION TO LOAD ALL THE IMAGES
+*/
+$imageDetail = Mage::getModel('featured/featured')->loadImages();
+?>
+<script type="text/javascript">
+	function showFileDiv()
+	{
+		document.getElementById("fileno").style.display="block";
+		var number = document.getElementById("numtodisplay").selectedIndex;
+		for(var k=1;k<=10;k++)
+		{
+			document.getElementById("fileno"+k).style.display="none";
+		}
+		for(var k=1;k<=number;k++)
+		{
+			document.getElementById("fileno"+k).style.display="block";
+		}
+	}
+	
+	function showPresntFile()
+	{
+		document.getElementById("fileno").style.display="block";
+		<?php $size = sizeof($imageDetail);?>
+		document.getElementById("numtodisplay").selectedIndex = <?php echo $size;?>;
+		for(var j=1;j<=<?php echo $size;?>;j++)
+		{
+			document.getElementById("fileno"+j).style.display="block";
+		}
+		
+	}
+	
+	function checkCustom()
+	{
+		var sizes = document.getElementById("sizes").value;
+		if(sizes == 'Custom')
+		{
+			document.getElementById("customattr").style.display="block";
+			document.getElementById("customvalue").value="<?php echo $move->getImagesize();?>";
+		}
+		else
+		{
+			document.getElementById("customvalue").value="";
+			document.getElementById("customattr").style.display="none";
+		}
+		
+	}
+	function checkSelected(id)
+	{
+		document.getElementById(id).checked = false;
+	}
+</script>
+
+<div class="main-col-inner">
+  <div id="messages"></div>
+  <div class="content-header" style="visibility: visible;">
+    <h3 class="icon-head head-adminhtml-followprice">Image View Settings</h3>
+    <div class="content-buttons-placeholder" style="width: 0px; height: 15px;">
+      <p class="content-buttons form-buttons" style="">       	
+        <button style="" onClick="document.getElementById('formpost1').submit();" class="scalable save" type="button" id="id_712178e146a40289cc92690d57c44e1a"><span>Save</span></button>    
+      </p>
+    </div>
+   </div>
+<div class="clear:both"></div>
+<div class="entry-edit">  		
+<form id="formpost1" method="POST" action="<?=$this->getUrl('*/*/post')?>" enctype="multipart/form-data">
+<input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+<div style="" id="followprice_tabs_form_section_content">
+<div class="entry-edit">
+  <div class="entry-edit-head">
+    <h4 class="icon-head head-edit-form fieldset-legend">Item information</h4>
+    <div class="form-buttons"></div>
+  </div>
+  <div id="followprice_form" class="fieldset ">	
+<table class="form-list">
+ <tr>
+	<td class="label"><label><b>Turn Image View On: </b></label></td>	
+	<td>
+	<input type="checkbox" name="type" value="2" <?php if($type==2){echo "checked";}?>	
+	</td>
+</tr>
+ <tr>
+	<td class="label"><label><b>Select Horizontal/Vertical Navigation:</b></label></td>
+	<td>Horizontal: <input type="radio" name="move" value="1"  <?php if($movement==1){echo "checked";}?>>&nbsp;&nbsp;Vertical : <input type="radio" name="move" value="2" <?php if($movement==2){echo "checked";}?>></td>
+</tr>
+<tr>
+	<td><label><b>Image Size(width x height):</b></label></td>
+	<td>
+		<?php
+			$optionsArray = array(1=>'600x200',2=>'700x300',3=>'800x350');
+		?>
+		
+		<select id="sizes" name="imagesize"  onchange="checkCustom();">
+			<?php 
+				$check = '';
+				foreach ($optionsArray as $option)
+				{
+					$selectedOption = '';
+					if($move->getImagesize() == $option)
+					{
+						$check = 1;
+						$selectedOption = "selected";
+					}
+					
+			?>
+						<option value="<?php echo $option; ?>" <?php echo $selectedOption; ?>><?php echo $option; ?></option>
+			<?php
+				}
+				$custom = '';
+				if($check == '')
+				{
+					$custom = 'selected';
+				}
+				else 
+				{
+					$custom = '';
+				}
+			?>
+						<option value="Custom" <?php echo $custom; ?>>Custom</option>
+		</select>
+	</td>
+</tr>
+<tr>
+<td colspan="2">
+	<div id="customattr" style="display:none;padding:0px;">
+	<label><b>Custom:</b></label>
+	<input id="customvalue" type="text" name="customsize" value="<?php echo $move->getImagesize();?>" style="margin-left:118px;">
+	</div>
+</td>
+</tr>
+<tr>
+	<td><label><b>Number of Images to display for Slider:</b></label></td>
+	<td><select id="" name="no_of_images">
+		<option value="SELECT">SELECT</option>
+		<?php $size = sizeof($imageDetail);?>
+		<?php 
+		for ($j=1;$j<=$size;$j++)
+		{
+			$selected = '';
+			if($move->getNo_of_images() == $j)
+			{
+				$selected = "selected";
+			}
+			else 
+			{
+				$selected = '';
+			}
+		?>
+			<option value="<?php echo $j; ?>" <?php echo $selected; ?>><?php echo $j; ?></option>
+		<?php
+		}
+		?>
+		</select>
+	</td>
+</tr>
+<tr>
+	<td><label><b>Uploaded Images:</b></label></td>
+	<td><select id="numtodisplay" name="selectno" onchange="showFileDiv();">
+		<option value="SELECT">SELECT</option>
+		<?php 
+		for ($j=1;$j<11;$j++)
+		{
+		?>
+			<option value="<?php echo $j; ?>"><?php echo $j; ?></option>
+		<?php
+		}
+		?>
+	</select>
+	<input type="hidden" name="skinurl" value="<?php echo $this->getSkinUrl('images'); ?>"/>
+	<div id="fileno" style="width:100%; padding-top:10px;">
+		<?php														
+		$baseUrl=Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB);		
+		$j=1;
+		for ($i=0;$i<10;$i++)
+		{
+		?>
+			<div id="fileno<?php echo $j; ?>" style="display:none;padding-bottom:5px;overflow:hidden;width:400px;">
+				<div style="float:left">
+					<div><input type="file" name="images[]"></div>
+					<div style="padding-top:5px;">Image Link : &nbsp;&nbsp;<input type="text" name="link[]" value="<?php if(isset($imageDetail[$i]['image_link'])){echo $imageDetail[$i]['image_link'];}?>"><br/>
+					(i.e http://www.example.com)
+					</div>
+				</div>
+				<div style="float:right">		
+				<?php 
+					if(isset($imageDetail[$i]['image_path']))
+					{
+				?>
+				<img src="<?php if(isset($imageDetail[$i]['image_path'])){echo $baseUrl.$imageDetail[$i]['image_path'];}?>" width="50" height="50" align="absmiddle" >
+				(delete:)<input type="checkbox" name="delete[]" value="<?php echo $imageDetail[$i]['id'];?>"/>
+				
+				<input type="hidden" name="imagepath[<?php echo $imageDetail[$i]['id'];?>]" value="<?php if(isset($imageDetail[$i]['image_path'])){echo $imageDetail[$i]['image_path'];}?>">
+				<?php
+					}
+				?>
+				</div>
+			</div>
+		<?php
+		$j++;
+		}
+		?>
+	</div>
+	</td>
+</tr>
+<!--tr>
+	<td><button name="imageview" type="submit" class="scalable"><span>Submit</span></button></td>
+</tr-->
+</table>
+	</div>
+	</div>
+	</div>
+</form>
+</div>
+</div>
+<script language="javascript">
+showPresntFile();
+checkCustom();
+</script>

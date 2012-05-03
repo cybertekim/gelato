@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <TM_Templatea017>
+            <version>1.1.0</version>
+        </TM_Templatea017>
+    </modules>
+    <global>
+        <resources>
+            <templatea017_setup>
+                <setup>
+                    <module>TM_Templatea017</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </templatea017_setup>
+        </resources>
+    </global>
+</config>

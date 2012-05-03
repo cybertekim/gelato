@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>(mt) Media Temple - Business-Class Web Hosting Services</title>
+
+<style type="text/css">
+/*
+	-- -- -- -- -- -- --
+	Undo browser defaults
+	http://tantek.com/log/2004/09.html#d06t2354
+	-- -- -- -- -- -- --
+
+*/
+/* -- end undo browser HTML defaults -- */
+:link,:visited {text-decoration: none;}
+ul,ol {list-style: none;}
+h1,h2,h3,h4,h5,h6,pre,code,p {font-size: 1em;}
+ul,ol,dl,li,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,body,html,p,blockquote,fieldset,input,hr {margin: 0; padding: 0;}
+a img,:link img,:visited img,hr {border: none;}
+address {font-style: normal;}
+/* -- end undo browser HTML defaults -- */
+
+body {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	background:#fff url(mt_images/ww_bg.gif) repeat-x center top;
+	text-align:center;
+	color:#898989;
+}
+
+/* layout */
+#header {
+	height:87px;
+}
+#content {
+	text-align:left;
+	width:955px;
+	margin:0 auto;
+}
+div.clearfix {
+	clear:both;
+	height:0px;
+	overflow:hidden;
+}
+
+/* links */
+a, a:link, a:visited {
+	color:#242424;
+	text-decoration:none;
+}
+a:hover, a:active {
+	color:#004A80;
+	text-decoration:underline;
+}
+a em {
+	position:absolute;
+	left:-9999px;
+}
+
+/* header links */
+#logo {
+	display:block;
+	position:absolute;
+	top:30px;
+	left:40px;
+	width:230px;
+	height:25px;
+	/* IE 5.x-6/Win only filter */
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale src='mt_images/mtlogo.png');
+}
+#logo[id] {
+	background:url(mt_images/mtlogo.png);
+}
+
+#login {
+	display:block;
+	position:absolute;
+	top:15px;
+	right:40px;
+	width:280px;
+	height:30px;
+	overflow:hidden;
+	font-size:12px !important;
+	line-height:200%;
+	color:#808080;
+	/* IE 5.x-6/Win only filter */
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale src='mt_images/login_bg.png');
+}
+#login[id] {
+	background:url(mt_images/login_bg.png);
+}
+#login strong {
+	font-weight:normal !important;
+	color:#fff;
+}
+#login:hover {
+	color:#808080;
+	text-decoration:none;
+}
+#login:hover strong {
+	color:#fff;
+	text-decoration:underline;
+}
+
+/* content styles */
+#subhead {
+  padding:30px 0 0 0;
+}
+h1 {
+  font-size: 24px;
+  font-weight:normal;
+  margin:0 10px;
+  padding: 0 0 15px 0;
+  color:#004A80;
+}
+em.hostname {
+  display:block;
+  float:right;
+  margin:0 10px;
+  padding:10px 0 0 0;
+  font-style:normal;
+  color:#898989;
+}
+hr {
+  background-color:#eee;
+  color:#eee;
+  display:block;
+  height:6px;
+  width:100%;
+}	
+p {
+  margin:0 15px;
+  padding:25px 0;
+}
+
+#checklist {
+  margin:0 10px;
+  padding:20px 0;
+}
+#checklist ul {
+  display:block;
+}
+#checklist ul li {
+  display:block;
+  float:left;
+  width:33%;
+}
+
+#checklist ul li strong {
+  display:block;
+  padding:15px 0 0 0;
+  font-size:18px;
+  font-weight:normal;
+}
+#checklist ul li strong em {
+  font-style:normal;
+  font-weight:bold;
+  color:#555;
+}
+
+#checklist .middle {
+  text-align:center;
+}
+#checklist .middle div {
+  width:275px;
+  text-align:left;
+  margin:0 auto;
+}
+#checklist .right div {
+  float:right;
+}
+
+
+#kblinks {
+  padding:20px 0;
+}
+#kblinks dl, #kblinks dt, #kblinks dd, #kblinks span, #kblinks a {
+  display:block;
+}
+#kblinks dt {
+  padding:5px 0;
+  color:#004A80;
+  background:#eee url(mt_images/help_16.gif) no-repeat 10px 50%;
+}
+#kblinks dt span {
+  margin-left:35px;
+}
+#kblinks dt a {
+  float:right;
+  margin:0 10px 0 0;
+  color:#999;
+}
+#kblinks dt a:hover {
+  color:#242424;
+  text-decoration:none;
+}
+#kblinks dd {
+  float:left;
+  width:25%;
+  padding:10px 0 0 0;
+  background-repeat:no-repeat;
+  background-position:20px 20px;
+}
+/* because percents dont matter in IE */
+*html #kblinks dd {
+  width:24%;
+}
+
+#kblinks dd div {
+  height:75px;
+  border-right:1px solid #eee;
+}
+#kblinks dd div span {
+  margin-left:80px;
+  padding:10px 0 0 0;
+  color:#004A80;
+}
+
+.plesk_guide { background-image:url(mt_images/icon_plesk_guide.gif); }
+.add_domain { background-image:url(mt_images/icon_add_domain.gif); }
+.add_email { background-image:url(mt_images/icon_add_email.gif); }
+.data_backup { background-image:url(mt_images/icon_data_backup.gif); }
+
+#kblinks .enddd div { border:none; }
+
+#kblinks a.launch {
+  background: url(mt_images/launchguide.gif) no-repeat;
+  height:30px;
+  margin:8px 0 0;
+  width:67px;
+}
+#kblinks a.launch:hover {
+  background-position:-67px top;
+}
+#kblinks .video span {
+  background:url(mt_images/vidguide.gif) no-repeat 85px 37px;
+}
+
+</style>
+
+<script type="text/javascript">
+	var domain = document.location.host;
+
+	function pleskLogin() {
+		window.location = 'https://' + domain + ':8443';
+		}
+</script>
+
+</head>
+
+
+<body>
+<!-- MT HEADER -->
+<div id="header">
+  <a id="logo" href="http://mediatemple.net" title="(mt) Media Temple - Web Hosting Services"><em>(mt) Media Temple</em></a> 
+  <a id="login" href="https://ac.mediatemple.net" title="(mt) Media Temple Customer Login">(877) 578-4000 24/7 SUPPORT  |  <strong>LOGIN</strong></a>
+</div>
+
+<!-- CONTENT -->
+<div id="content">
+<!-- print current host url -->
+ <div id="subhead">
+   <em class="hostname">
+	<script type="text/javascript">
+        document.write(domain);
+    </script>
+   </em>
+ 
+   <h1>Server Default Page</h1>
+     <hr />
+       <p>This page has been generated automatically. If you are the server administrator and you feel that you have reached this page in error,
+        then try completing the following steps. Please consult the <a href="http://kb.mediatemple.net/" title="(mt) KnowledgeBase">KnowledgeBase</a> articles below for more information.</p>
+  </div>
+        
+     <div id="checklist">
+       <ul>
+         <li class="left">
+           <div>
+             <a href="#" title="Go to Plesk login page" onClick="pleskLogin();">
+				<img src="mt_images/screen_login.gif" alt="Plesk login screen" />
+             </a>
+			 <strong><em>1.</em> <a href="#" onClick="pleskLogin();">Log in to Plesk</a></strong>
+           </div>
+         </li>
+         <li class="middle">
+           <div>
+             <img src="mt_images/screen_domains.gif" alt="Plesk domains screen" />
+             <strong><em>2.</em> Make sure domain is added</strong>
+           </div>
+         </li>
+         <li class="right">
+           <div>
+             <img src="mt_images/screen_setup.gif" alt="Plesk hosting setup" />
+             <strong><em>3.</em> Make sure hosting is configured</strong>
+           </div>
+         </li>
+       </ul>
+      <div class="clearfix">&nbsp;</div>
+     </div>
+     
+     <div id="kblinks">
+       <dl>
+          <dt><a href="http://kb.mediatemple.net/category.php?id=9">View all related Articles</a> <span>Featured KnowledgeBase Articles</span></dt>
+         <dd class="plesk_guide"><div><span>Plesk Setup Guide <a href="http://download1.swsoft.com/Plesk/Plesk8.4/Doc/en-US/plesk-8.4-unix-administrators-guide/" title="Getting started with Plesk" class="launch"><em>Launch</em></a></span></div>
+         </dd>
+            <dd class="add_domain video"><div><span>Adding Domains <a href="http://kb.mediatemple.net/article.php?id=453" class="launch"><em>Launch</em></a></span></div>
+         </dd>
+            <dd class="add_email video"><div><span>Adding Email Users <a href="http://kb.mediatemple.net/article.php?id=416" class="launch"><em>Launch</em></a></span></div>
+         </dd>
+            <dd class="data_backup video enddd"><div><span>Creating Data Backups <a href="http://kb.mediatemple.net/article.php?id=436" class="launch"><em>Launch</em></a></span></div>
+         </dd>
+       </dl>
+     </div>
+</div>
+
+</body>
+</html>

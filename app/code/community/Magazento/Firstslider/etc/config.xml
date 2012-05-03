@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <modules>
+        <Magazento_Firstslider>
+            <version>1.0.0</version>
+        </Magazento_Firstslider>
+    </modules>
+    <frontend>
+        <layout>
+            <updates>
+                <firstslider>
+                    <file>magazento_firstslider.xml</file>
+                </firstslider>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Magazento_Firstslider>
+                    <files>
+                        <default>Magazento_Firstslider.csv</default>
+                    </files>
+                </Magazento_Firstslider>
+            </modules>
+        </translate>
+    </frontend>
+    
+    <global>
+        <rewrite>
+            <mage_adminhtml_system_variable>
+                <from><![CDATA[#^/firstslider/system_variable#]]>
+                </from>
+                <to>/admin/system_variable</to>
+            </mage_adminhtml_system_variable>
+        </rewrite>
+        <models>
+            <firstslider>
+                <class>Magazento_Firstslider_Model</class>
+                <resourceModel>firstslider_mysql4</resourceModel>
+            </firstslider>
+            <firstslider_mysql4>
+                <class>Magazento_Firstslider_Model_Mysql4</class>
+                <entities>
+                    <slide>
+                        <table>magazento_firstslider_slide</table>
+                    </slide>
+                    <slide_category>
+                        <table>magazento_firstslider_slide_category</table>
+                    </slide_category>
+                    <category>
+                        <table>magazento_firstslider_category</table>
+                    </category>
+                    <category_store>
+                        <table>magazento_firstslider_category_store</table>
+                    </category_store>
+                </entities>
+            </firstslider_mysql4>
+        </models>
+        <resources>
+            <firstslider_setup>
+                <setup>
+                    <module>Magazento_Firstslider</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </firstslider_setup>
+            <firstslider_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </firstslider_write>
+            <firstslider_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </firstslider_read>
+        </resources>
+        <blocks>
+            <firstslider>
+                <class>Magazento_Firstslider_Block</class>
+            </firstslider>
+        </blocks>
+        <helpers>
+            <firstslider>
+                <class>Magazento_Firstslider_Helper</class>
+            </firstslider>
+        </helpers>
+    </global>
+    <admin>
+        <routers>
+            <magazento_firstslider>
+                <use>admin</use>
+                <args>
+                    <module>Magazento_Firstslider</module>
+                    <frontName>firstslider</frontName>
+                </args>
+            </magazento_firstslider>
+        </routers>
+    </admin>
+    
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <magazento>
+                            <children>
+                                <firstslider translate="title">
+                                    <title>Firstslider</title>
+                                    <children>
+                                        <new translate="title">
+                                            <title>Add New</title>
+                                        </new>
+                                        <slide translate="title">
+                                            <title>Manage Slides </title>
+                                        </slide>
+                                        <category translate="title">
+                                            <title>Manage Categories</title>
+                                        </category>
+                                    </children>
+                                    <sort_order>65</sort_order>
+                                </firstslider>
+                                <system>
+                                    <children>
+                                        <config>
+                                            <children>
+                                                <firstslider>
+                                                    <title>Firstslider</title>
+                                                    <sort_order>101</sort_order>
+                                                </firstslider>
+                                            </children>
+                                        </config>
+                                    </children>
+                                </system>
+                            </children>
+                        </magazento>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <menu>
+            <magazento translate="title" module="firstslider">
+                <title>Magazento</title>
+                <sort_order>65</sort_order>
+                <children>
+                    <firstslider translate="title" module="firstslider">
+                        <title>Firstslider</title>
+                        <sort_order>65</sort_order>
+                        <children>
+                            <new translate="title" module="firstslider">
+                                <title>Add New</title>
+                                <action>firstslider/admin_slide/new/</action>
+                                <resource>firstslider/admin/slide</resource>
+                            </new>
+                            <slide translate="title" module="firstslider">
+                                <title>Manage Slides</title>
+                                <action>firstslider/admin_slide/</action>
+                                <resource>firstslider/admin/slide</resource>
+                            </slide>
+                            <category translate="title" module="firstslider">
+                                <title>Manage Categories</title>
+                                <action>firstslider/admin_category/</action>
+                                <resource>firstslider/admin/category</resource>
+                            </category>
+                            <settings translate="title" module="firstslider">
+                                <title>Settings</title>
+                                <action>adminhtml/system_config/edit/section/firstslider</action>
+                                <sort_order>40</sort_order>
+                            </settings>
+                        </children>
+                    </firstslider>
+                </children>
+            </magazento>
+        </menu>
+    </adminhtml>
+    <default>
+        <firstslider>
+            <options>
+                <enable>1</enable>
+            </options>
+            <licence>
+                <email>johndoe@magazento.com</email>
+                <serial>000000000000000000000000</serial>
+            </licence>
+        </firstslider>
+    </default>
+</config>

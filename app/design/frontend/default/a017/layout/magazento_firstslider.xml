@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<layout>
+  <default>
+    <reference name="head">
+      <action method="addItem"><type>skin_js</type><name>magazento_firstslider/slider.js</name><params/></action>
+      <action method="addCss"><stylesheet>magazento_firstslider/slider.css</stylesheet></action>
+    </reference>
+  </default>
+</layout>

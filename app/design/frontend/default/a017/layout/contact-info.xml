@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<reference name="content">
+   <block type="cms/block" name="contact-info">
+      <action method="setBlockId"><block_id>contact-info</block_id></action>
+   </block>
+</reference>

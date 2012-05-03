@@ -1,0 +1,88 @@
+<?php 
+$move = Mage::getModel('featured/featured')->load(1);
+$featuredProducts = $move->getNo_of_featured();
+$movement =  $move->getMove();
+$type = $move->getType();
+/*
+* CALL THE FUNCTION TO LOAD ALL THE IMAGES
+*/
+$imageDetail = Mage::getModel('featured/featured')->loadImages();
+?>
+
+<div class="main-col-inner">
+  <div id="messages"></div>
+  <div class="content-header" style="visibility: visible;">
+    <h3 class="icon-head head-adminhtml-followprice">Product View Settings</h3>
+    <div class="content-buttons-placeholder" style="width: 0px; height: 15px;">
+      <p class="content-buttons form-buttons" style="">             
+        <button style="" onClick="document.getElementById('formpost').submit();" class="scalable save" type="button" id="id_712178e146a40289cc92690d57c44e1a"><span>Save</span></button>    
+      </p>
+    </div>
+   </div>
+<div class="clear:both"></div>
+<div class="entry-edit">  		
+<form id="formpost" method="POST" action="<?=$this->getUrl('*/*/save')?>">
+<input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+<input type="hidden" name="productview" value="1">
+<div style="" id="followprice_tabs_form_section_content">
+<div class="entry-edit">
+  <div class="entry-edit-head">
+    <h4 class="icon-head head-edit-form fieldset-legend">Item information</h4>
+    <div class="form-buttons"></div>
+  </div>
+  <div id="followprice_form" class="fieldset ">	
+<table cellspacing="0" class="form-list">
+<tbody>
+	<tr>
+		<td class="label"><label><b>Turn Product View On:</b></label></td>
+		<td><input type="checkbox" name="type1" value="1" <?php if($type==1){echo "checked";}?>></td>
+	</tr>	
+    <tr>
+		<td class="label"><label><b>Horizontal / Vertical Navigation:</b></label></td>
+		<td >Horizontal: <input type="radio" name="move" value="1"  <?php if($movement==1){echo "checked";}?>>&nbsp;&nbsp;Vertical : <input type="radio" name="move" value="2" <?php if($movement==2){echo "checked";}?>></td>
+	</tr>
+	
+	<tr>
+		<td><label><b>Number of products to display:</b></label></td>
+		<td>
+			<?php
+			// The maximum number of featured products to be displayed will be 10 or less then 10.
+			$featuredProductsCnt = Mage::getModel('featured/featured')->getFeaturedProducts();
+			$featuredCnt = count($featuredProductsCnt);
+			if($featuredCnt  > 10)
+			{
+				$featuredCnt=10;
+			}
+			
+			if(empty($featuredCnt))
+			{
+				echo "There are no Featured Products configured";
+			}
+			else 
+			{
+			?>
+				<select style="width:50px;" id="number" name="no_of_featured">
+				<?php
+				for($i=1;$i<=$featuredCnt;$i++)
+				{
+			?>
+					<option value="<?php echo $i;?>"><?php echo $i;?></option>
+			<?php
+				}
+			}
+			?>
+			</select>
+		</td>
+	</tr>	
+</tbody>
+</table>
+	</div>
+	</div>
+	</div>
+</form>
+</div>
+</div>
+<script type="text/javascript">
+var obj = document.getElementById("number");
+obj.selectedIndex = <?php echo $featuredProducts-1;?>
+</script>

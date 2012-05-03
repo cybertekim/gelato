@@ -1,0 +1,35 @@
+<div class="header-container">
+    <div class="header">
+        <div class="header-top">
+
+            <?php if ($this->getIsHomePage()):?>
+             <div class="logo">
+                <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /><br />
+                <h2>The best choice in Accessories and Supplies</h2>
+            </div>
+            <?php else:?>
+             <a class="logo" href="<?php echo $this->getUrl('') ?>"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+            <?php endif?>
+            <p class="no-display"><a href="#main"><strong><?php echo $this->__('Skip to Main Content') ?> &raquo;</strong></a></p>
+            <?php echo $this->getChildHtml('store_language') ?>
+            <?php echo $this->getChildHtml('headerCart') ?>
+            <?php echo $this->getChildHtml('topSearch') ?>
+            <div class="quick-access">
+                <div class="quick-access-wrapper">
+                    <p class="welcome-msg"><?php echo $this->getWelcome() ?></p>
+                    <div class="shop-access">
+                        <?php echo $this->getChildHtml('topLinks') ?>
+                    </div>
+                </div>
+            </div>
+            <div id="free-shipping">
+                <img src="../skin/frontend/default/a017/images/free_ground_shipping.png" alt="" />
+            </div>
+            <?php echo $this->getChildHtml('topContainer'); ?>
+            <div class="clearer"></div>
+        </div>
+    </div>
+
+    <?php echo $this->getChildHtml('topMenu') ?>
+</div>
+

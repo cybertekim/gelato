@@ -1,0 +1,79 @@
+
+.easyslideslider-id { 
+    position: relative;
+    z-index: 5;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.easyslideslider-id div.scroller { 
+    overflow: hidden;
+    position: relative;     
+}
+.easyslideslider-id .easyslidecontrolwr {
+    position: absolute;
+    right:15px;
+    top:15px;
+    z-index:6;
+}
+.easyslideslider-id div.scroller img{
+    border: none;
+}
+.easyslideslider-id div.scroller div.section {  
+    overflow:hidden;
+    float:left;
+}
+.easyslideslider-id div.scroller div.content {
+    width: 10000px;
+    padding: 0px;
+}
+.easyslideslider-id .content .easyslidedescription{
+    padding: 0px 10px;
+    position:relative;
+    top:-30px;
+    font: 11px bold Helvetica, sans-serif;
+    opacity:0.65;
+    filter:alpha(opacity=65);       
+}   
+.easyslideslider-id .content .easyslidedescription p{ line-height: 20px; text-align: center; }
+.easyslideslider-id div.easyslidedescription{ }
+.easyslideslider-id .content a { text-decoration: none; color: #5a5a5a; }
+.easyslideslider-id .content a:hover { text-decoration: underline; }
+
+.easyslideslider-id .easyslidercontrol {
+    margin: 0;
+    padding: 0;
+}
+.easyslideslider-id .easyslidercontrol a {
+    float: left;
+    width: 15px;
+    height: 17px;
+    margin: 0px 2px;
+    padding: 0px 2px;
+    text-decoration: none;
+    font-weight: bold;
+    overflow: hidden;   
+    text-align:center;
+}
+.easyslideslider-id .easyslidercontrol a:hover,
+.easyslideslider-id .easyslidercontrol a.active { }
+
+.easyslideslider-id .easyslideprev
+{
+    background: url(../images/aprev.gif) no-repeat 3px 4px;
+}
+.easyslideslider-id .easyslidenext
+{
+    background: url(../images/anext.gif) no-repeat 5px 4px;
+}
+.easyslideslider-id .easyslidestop
+{
+    background: url(../images/astop.gif) no-repeat 5px 4px;
+}
+.easyslideslider-id .easyslideplay
+{
+    background: url(../images/aplay.gif) no-repeat 8px 4px;
+}
+
+
+.easyslideslider-id p.description { position: absolute; bottom: 0; left: 0; padding: 10px; }
+.easyslideslider-id div.section a { position: relative; }

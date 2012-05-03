@@ -1,0 +1,195 @@
+<!-- CHECK IF THERE ARE ANY FEATURED PRODUCTS -->
+<?php 
+// get the settings set from admin
+$move = Mage::getModel('featured/featured')->load(1);
+if ($featured_products = Mage::getModel('featured/featured')->getFeaturedProducts()): ?>
+<?php 
+if($move->getType() == '1')
+{
+	/*
+	* PRODUCT VIEW
+	*/
+?>
+	<div id="my-glider">
+		<div class="scroller">
+		<?php
+		if($move->getMove() == 2)
+		{
+		?>
+		<div id="mainDiv" style="padding:3px;" onmouseover="my_glider.stop();">
+		<?php
+		}
+		else
+		{
+		?>
+			<div id="mainDiv" class="content" style="padding:3px;" onmouseover="my_glider.stop();">
+		<?php
+		}
+		?>
+		
+	  			<?php 
+	  			// total number of featured products.
+	  			$countFeatured = count($featured_products);
+	  			// get the number of featured products to show.
+	  			$_collectionSize = $move->getNo_of_featured();
+				if($countFeatured < $_collectionSize)
+	  			{
+	  				echo "The No. of featured produts are less then the No. of products to display";
+	  			}
+	  			else 
+	  			{
+			   	for($i=0;$i<$_collectionSize;$i++)
+				{
+					$_product = Mage::getModel('catalog/product')->load($featured_products[$i]['product_id']); 
+			?>
+						<div class="section" id="section<?php echo $_product->getId(); ?>">
+							<div class="feature-entry" id="post-<?php echo $_product->getId(); ?>">
+								<table width="100%" cellspacing="0" cellpadding="0" border="0">
+								<tr>
+									<td width="30%" valign="top" style="padding-right: 5px;">
+									<a href="<?php echo $_product->getProductUrl() ?>">
+										<img class="product-image" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(220,180); ?>" alt="<?php echo $this->htmlEscape($_product->getName()) ?>" />
+									</a>
+									</td>
+									<td valign="top" id="featured" style="text-align:left;padding-left:2px;">
+										<h2>
+											<a href="<?php echo $_product->getProductUrl() ?>" rel="bookmark" title="<?php echo $this->htmlEscape($_product->getName()) ?>">
+											<?php 
+												if(strlen($_product->getName()) > 80)
+												{
+													echo substr($_product->getName(),0,80)."...";
+												}
+												else
+												{
+													echo $this->htmlEscape($_product->getName());
+												}	
+											?>
+											</a>
+										</h2>
+										<span style="color:#0A263C;font-weight:bold;width:auto;float:left;padding:10px;"><?php echo "$".$_product->getPrice(); ?></span>
+										<span style="float:left;width:auto;padding:10px;">
+										<?php $additional=array();  if($_product->isSaleable()): ?>
+	            							<button class="form-button" onclick="setLocation('<?php echo Mage::helper('checkout/cart')->getAddUrl($_product, $additional);?>')"><span><?php echo $this->__('Add to Cart') ?></span></button>
+	            						<?php else: ?>
+	            							<div class="out-of-stock"><?php echo $this->__('Out of stock') ?></div>
+	            						<?php endif; ?>
+	            						</span>
+	            						<div style="clear:both"/>
+	            						<div style="padding-right: 18px;">
+				                  				<?php 
+											$desc=Mage::helper('catalog/output')->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description');
+											if(strlen($desc) > 300)
+											{
+												echo substr($desc,0,300)."...";
+											}
+											else
+											{
+												echo $desc;
+											}
+										?>
+						                </span>
+									</td>
+								</tr>
+								</table>
+							</div>
+						</div>       
+			        <?php 
+			       
+					}
+				}
+			        ?>
+			        
+			</div>
+		</div>
+	</div>
+	<div class="controls" onmouseover="my_glider.stop();">
+	<ul class="clearfix" style="margin-bottom:15px;">
+	<li style="padding-left: 5px; width: 565px;text-align:left;" onclick="my_glider.previous();return false">Previous</a></li> 
+	<li style="padding-right: 5px;" onclick="my_glider.next();return false">Next</li>
+	</ul>
+</div>
+<?php
+}
+endif;
+if($move->getType() == 2)
+{
+	/*
+	* IMAGE VIEW
+	*/
+	$imageSize = $move->getImagesize();
+	$width = strtok($imageSize,'x');
+	$height = strtok('x');
+?>
+	<div id="my-glider" style="width:600px;">
+		<div id="scrollerid" class="scroller">
+			<?php
+			if($move->getMove() == 2)
+			{
+			?>
+			<div id="mainDiv" onmouseover="my_glider.stop();">
+			<?php
+			}
+			else
+			{
+			?>
+				<div id="mainDiv" class="content" onmouseover="my_glider.stop();">
+			<?php
+			}
+			?>
+				<?php 
+	  			$_collectionSize = $move->getNo_of_images();
+				$imageDetail = Mage::getModel('featured/featured')->loadImages();
+	  			for($i=0;$i<$_collectionSize;$i++)
+				{
+									
+			?>
+						<div class="section" id="section<?php echo $imageDetail[$i]['id']; ?>">
+							<div class="feature-entry" id="post-<?php echo $imageDetail[$i]['id']; ?>">
+								<table width="100%" cellspacing="0" cellpadding="0" border="0">
+								<tr>
+									<td valign="top" style="padding-right: 5px;">
+									<?php $baseurl=Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>
+									<a href="<?php echo $imageDetail[$i]['image_link']; ?>">
+										<img class="product-image" src="<?php echo $baseurl.$imageDetail[$i]['image_path']; ?>"/>
+									</a>
+									</td>
+								</tr>
+								</table>
+							</div>
+						</div> 
+						<script type="text/javascript">
+						document.getElementById("section<?php echo $imageDetail[$i]['id']; ?>").style.width='<?php echo $width; ?>px';
+						document.getElementById("section<?php echo $imageDetail[$i]['id']; ?>").style.padding='0px';
+						document.getElementById("section<?php echo $imageDetail[$i]['id']; ?>").style.height='<?php echo $height; ?>px';
+						</script>    
+						    
+			        <?php 
+			       
+					}
+				
+			        ?>
+			</div>
+		</div>
+	</div>
+	<div id="controlsid" class="controls" onmouseover="my_glider.stop();">
+	<ul id="controlsulid" class="clearfix" style="margin-top:-1px;margin-left:1px;">
+	<li id="controlsliid" style="padding-left: 5px;text-align:left;" onclick="my_glider.previous();return false">Previous</a></li> 
+	<li style="padding-right: 5px;" onclick="my_glider.next();return false">Next</li>
+	</ul>
+	</div>
+	<script type="text/javascript">
+	document.getElementById("scrollerid").style.width='<?php echo $width; ?>px';
+	document.getElementById("scrollerid").style.height='<?php echo $height; ?>px';
+	document.getElementById("controlsid").style.width='<?php echo $width; ?>px';
+	document.getElementById("controlsulid").style.width='<?php echo $width+2; ?>px';
+	document.getElementById("controlsliid").style.width='<?php echo $width-35; ?>px';
+	</script>
+<?php
+}
+?>
+<script type="text/javascript" charset="utf-8">
+var my_glider = new Glider('my-glider', {duration:0.5,autoGlide:true, frequency:8});
+</script>
+<br/>
+<div style="clear:both"></div>
+

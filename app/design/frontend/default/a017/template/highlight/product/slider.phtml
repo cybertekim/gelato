@@ -1,0 +1,21 @@
+<?php if (($_products = $this->getProductCollection()) && $_products->getSize()): ?>
+<div class="slider-wrapper">
+    <div id="slider">
+    <ol class="recently-list" id="new-products-list-table">
+        <?php $i=0; foreach ($_products->getItems() as $_product): ?>
+        <li>
+            <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>">
+                <img class="product-image" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(137, 137) ?>" width="137" height="137" alt="<?php echo $this->htmlEscape($_product->getName()) ?>" />
+            </a>
+        </li>
+        <?php endforeach; ?>
+    </ol>
+    </div>
+    <a href="#" id="move-left">left</a>
+    <a href="#" id="move-right">right</a>
+    <script src="<?php echo $this->getSkinUrl() ?>js/slider.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var slider = new Slider('slider', 'move-left', 'move-right');
+    </script>
+</div>
+<?php endif; ?>

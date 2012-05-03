@@ -1,0 +1,54 @@
+<?php
+if (Mage::getStoreConfig('firstslider/options/enable')) {
+$cid = $this->getCategoryid();
+$slider_id = $this->getSliderid();
+$slider_style=$this->getStyle();
+$slider_duration=$this->getDuration();
+$slider_frequency=$this->getFrequency();
+$slider_autoglide=$this->getAutoglide();
+$slider_topbuttons=$this->getTopbuttons();
+$slider_bottombuttons=$this->getBottombuttons();
+
+$model = $this->getModel();
+if ($model->hasItems($cid)) {
+    $collection = $model->getItems($cid);
+
+?>
+
+
+<div style="<?php echo $slider_style; ?>">
+    <div id="glider<?php echo $slider_id; ?>">
+    <?php if ($slider_topbuttons) { ?>
+        <div class="controls" >
+            <?php $collection = $model->getItems($cid); ?>
+            <?php foreach ($collection as $item) { ?>
+            <a href="#section<?php echo $item['slide_id'] ?>">  <?php echo $item['title'] ?></a>
+            <?php } ?>
+        </div>
+    <?php } ?>
+        <div style="<?php echo $slider_style; ?>" class="scroller">
+            <div class="content">
+            <?php $collection = $model->getItems($cid); ?>
+            <?php foreach ($collection as $item) { ?>
+                <div style="<?php echo $slider_style; ?>" class="section" id="section<?php echo $item['slide_id'] ?>">
+                    <?php echo $item['content'] ?>
+                </div>
+            <?php } ?>
+            </div>
+        </div>
+
+    </div>
+    <?php if ($slider_bottombuttons) { ?>
+        <a href="#" onclick="my_glider<?php echo $slider_id; ?>.previous();return false;">Previous</a> |  <a href="#" onclick="my_glider<?php echo $slider_id; ?>.next();return false">Next</a>
+    <?php } ?>
+    <script type="text/javascript" charset="utf-8">
+        var my_glider<?php echo $slider_id; ?>
+                        = new Glider('glider<?php echo $slider_id; ?>',
+                                {duration:<?php echo $slider_duration; ?>,
+                                autoGlide:<?php echo $slider_autoglide; ?>,
+                                frequency:<?php echo $slider_frequency; ?> });
+    </script>
+
+</div>
+
+<?php } } ?>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <TM_Highlight>
+            <version>1.1.1</version>
+        </TM_Highlight>
+    </modules>
+    <global>
+        <models>
+            <highlight>
+                <class>TM_Highlight_Model</class>
+                <resourceModel>highlight_resource_eav_mysql4</resourceModel>
+            </highlight>
+            <highlight_resource_eav_mysql4>
+                <class>TM_Highlight_Model_Resource_Eav_Mysql4</class>
+            </highlight_resource_eav_mysql4>
+        </models>
+        <blocks>
+            <highlight>
+                <class>TM_Highlight_Block</class>
+            </highlight>
+        </blocks>
+    </global>
+</config>

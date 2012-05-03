@@ -1,0 +1,34 @@
+<div class="block block-navigation">
+    <div class="block-title">
+        <span><?php echo $this->__('Categories') ?></span>
+    </div>
+    <div class="block-content">
+    <ul id="nav-sidebox">
+        <?php foreach ($this->getStoreCategories() as $_category): ?>
+        <?php echo $this->drawItem($_category) ?>
+        <?php endforeach ?>
+    </ul>
+    </div>
+<!-- Custom Cups by Rick @ Cybertek -->
+	<div class="block-title">
+		<span>Custom Branding</span>
+	</div>
+	<div class="block-content">  
+		<ol class="products-list">
+			<li class="products-list">
+				<h4>Custom Printed Cups</h4>
+			</li>
+	<span class="product-image"><a href="catalog/product/view/id/227"><img src="<?php echo $this->getSkinUrl(); ?>/images/custom_printed_cup.jpg" width="215" height="215" alt="Custom Logo Printed Gelato and Ice Cream Cups" title="Custom Logo Printed Gelato and Ice Cream Cups"></a></span> 
+	</li>
+	<li>
+		<div style="padding-top:215px;">
+		<div class="desc std">
+			
+		We do custom printing on our cups with 1, 2, 3, and 4 colors. Please contact us for more details and to get a FREE quote... <a href="catalog/product/view/id/227">learn more</a>
+		</div>
+		</div>
+	</li>
+	</ol>	
+	</div>
+</div>
+<!-- End Custom Cups -->

@@ -1,0 +1,85 @@
+/***********Slider****************/
+/* modify width and height of scrolling section if necessary	*/		
+div.scroller 
+{ 
+	width: 598px; 
+	height: 200px;
+	overflow: hidden;
+	border:1px solid #cccccc;
+}
+/* modify width and height of each section as needed (should match the size of the scroller window)	*/		
+div.scroller div.section 
+{
+	width:598px;
+	height:180px;
+	overflow:hidden;
+	float:left;
+	padding:1em;
+}
+
+div.scroller div.content 
+{
+	width: 10000px;
+}
+
+/* Change the design of the controls part */
+.controls 
+{
+	-moz-background-clip:border;
+	-moz-background-inline-policy:continuous;
+	-moz-background-origin:padding;
+	background:#000000 none repeat scroll 0 0;
+	border-top:1px solid #FFFFFF;
+	clear:both;
+	margin:0;
+	padding:0;
+	width:600px;
+	cursor:pointer;
+}
+
+.controls ul 
+{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+
+.clearfix 
+{
+	display:block;
+}
+
+.controls li 
+{
+	background-color:#000000;
+	color:#FFFFFF;
+	float:left;
+	height:25px;
+	line-height:25px;
+	margin:0;
+}
+
+/* Button CSS */
+.form-button, .form-button-alt {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+-x-system-font:none !important;
+background:#F18200 none repeat scroll 0 0;
+border:1px solid #DE5400;
+color:#FFFFFF;
+cursor:pointer;
+font-family:arial,sans-serif !important;
+font-size:12px !important;
+font-size-adjust:none !important;
+font-stretch:normal !important;
+font-style:normal !important;
+font-variant:normal !important;
+font-weight:bold !important;
+line-height:normal !important;
+overflow:visible;
+padding:1px 8px;
+text-align:center;
+vertical-align:middle;
+width:auto;
+}

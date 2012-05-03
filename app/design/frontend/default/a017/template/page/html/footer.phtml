@@ -1,0 +1,80 @@
+
+<div class="footer-container">
+	<!-- Store Navigation added by Rick@Cybertek IM -->
+	<?php echo $this->getLayout()->getBlock('top.menu')->toHtml()?>
+	<!-- End Store Navigation -->
+    <div class="footer-wrapper">
+    <div class="footer">
+        <div class="col3-set">
+            <?php /* popular tags */ ?>
+            <?php $tag_block = $this->getLayout()->createBlock('tag/popular') ?>
+            <div class="block-product-tags col-1">
+                <div class="block-title">
+                    <span><?php echo $this->__('Popular Tags'); ?></span>
+                </div>
+                <div class="block-content">
+                <ul>
+                    <?php foreach ($tag_block->getTags()as $_tag) : ?>
+                        <li><a href="<?php echo $_tag->getTaggedProductsUrl() ?>" style="font-size:<?php echo $_tag->getRatio()*70+75 ?>%;"><?php echo $this->htmlEscape($_tag->getName()) ?></a></li>
+                    <?php endforeach; ?>
+                </ul>
+                </div>
+            </div>
+            
+            <?php /* newsletter */ ?>
+            <div class="block-newsletter col-2">
+                <div class="block-title">
+                    <span><?php echo $this->__('Newsletter') ?></span>
+                </div>
+                <form action="<?php echo $this->getUrl('newsletter/subscriber/new') ?>" method="post" id="newsletter-validate-detail-footer">
+                <fieldset class="block-content">
+                    <legend><?php echo $this->__('Newsletter') ?></legend>
+                    <!--
+                    <?php if( $message = $this->getErrorMessage() ): ?>
+                        <p class="error"><?php echo $message ?></p>
+                    <?php endif; ?>
+                    <?php if( $message = $this->getSuccessMessage() ): ?>
+                        <p class="success"><?php echo $message ?></p>
+                    <?php endif; ?>
+                    -->
+                    <button type="submit" class="button f-right"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
+                    <input name="email" type="text" id="newsletter-f" class="required-entry validate-email input-text" />
+                    <p><label for="newsletter"><?php echo $this->__('Subscribe to our free e-newsletter, and get new tips every two weeks.') ?></label></p>
+                </fieldset>
+                </form>
+                <script type="text/javascript">
+                //<![CDATA[
+                    var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail-footer');
+                //]]>
+                </script>
+            </div>
+            
+            <div class="block-links col-3">
+                <div class="block-title">
+                    <span><?php echo $this->__('Info') ?></span>
+                </div>
+                <div class="block-content">
+                <?php echo $this->getLayout()
+                    ->createBlock('cms/block')
+                    ->setBlockId('footer_links')
+                    ->toHtml(); ?> 
+                </div>
+            </div>
+        </div>
+        
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('contacts')->toHtml(); ?>
+        <p class="legality"><?php echo $this->getCopyright() ?></p>
+    </div>
+    <?php echo $this->getChildHtml() ?>
+    </div>
+</div>
+
+<script type="text/javascript">
+document.observe("dom:loaded", function() {
+    $$('.block').each(function(el, i){
+        if (i % 2 != 0) {
+            el.addClassName('odd');
+        }
+    });
+});
+</script>

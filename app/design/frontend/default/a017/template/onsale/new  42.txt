@@ -1,0 +1,102 @@
+<?php 
+    $pro_onsale = $this->getOnsale();
+    $_helper = $this->helper('catalog/output');
+?>
+<script type="text/javascript">
+jQuery(document).ready(function()
+{
+	jQuery("#showcase").awShowcase(
+	{
+		content_width:			700,
+		content_height:			310,
+		fit_to_parent:			false,
+		auto:					true,
+		interval:				3000,
+		continuous:				false,
+		loading:				true,
+		tooltip_width:			200,
+		tooltip_icon_width:		32,
+		tooltip_icon_height:	32,
+		tooltip_offsetx:		18,
+		tooltip_offsety:		0,
+		arrows:					true,
+		buttons:				false,
+		btn_numbers:			true,
+		keybord_keys:			true,
+		mousetrace:				false, /* Trace x and y coordinates for the mouse */
+		pauseonover:			true,
+		stoponclick:			false,
+		transition:				'hslide', /* hslide/vslide/fade */
+		transition_delay:		0,
+		transition_speed:		500,
+		show_caption:			'onload', /* onload/onhover/show */
+		thumbnails:				<?php if($this->helper('onsale')->getDisListImg()==1){ echo 'true';} else{ echo 'false';} ?>,
+		thumbnails_position:	'outside-last', /* outside-last/outside-first/inside-last/inside-first */
+		thumbnails_direction:	'horizontal', /* vertical/horizontal */
+		thumbnails_slidex:		1, /* 0 = auto / 1 = slide one thumbnail / 2 = slide two thumbnails / etc. */
+		dynamic_height:			false, /* For dynamic height to work in webkit you need to set the width and height of images in the source. Usually works to only set the dimension of the first slide in the showcase. */
+		speed_change:			true, /* Set to true to prevent users from swithing more then one slide at once. */
+		viewline:				false, /* If set to true content_width, thumbnails, transition and dynamic_height will be disabled. As for dynamic height you need to set the width and height of images in the source. */
+		custom_function:		null /* Define a custom function that runs on content change */
+	});
+});
+</script>
+<?php $check = $this->helper('onsale')->getEnableSlider();
+      if($check==1){ 
+?>
+<div style="width: 700px; margin: auto;">
+	<div id="showcase" class="showcase <?php if($this->helper('onsale')->getDisBorder()==1){ echo 'bslide'; } ?>" style="border-color: <?php echo $this->helper('onsale')->getBorderColor(); ?>;">
+        <?php foreach ($pro_onsale as $_product): ?>
+        <?php $imglabel = $this->helper('onsale')->getImgLabel();
+                  if($this->helper('onsale')->getEnableLabel()==1){
+             ?>
+			<img class="lb_onsale" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'/onsale/'.$imglabel;  ?>" alt="on sale image" width="100" height="100" />
+            <?php } ?>
+		<div class="showcase-slide">
+			<div class="showcase-content">
+				<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()); ?>">
+					<img class="pro_sale" src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail')->resize($this->helper('onsale')->getImgSize()); ?>" width="<?php echo $this->helper('onsale')->getImgSize(); ?>" height="<?php echo $this->helper('onsale')->getImgSize(); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                </a>
+                <div class="showcase-thumbnail-caption">
+                    <?php 
+                          $productName =  $_product->getName();
+                          if ($this->helper('onsale')->getDisName()==1){ ?>
+                            <span style="color:<?php echo $this->helper('onsale')->getNameColor();?>; font-weight:bold; font-size:<?php echo $this->helper('onsale')->getNameFontsize(); ?>px;"><?php echo $productName.'<br />' ?></span>
+                    <?php } ?>
+                    
+                    <?php 
+                          $desciption = $_product->getShortDescription();
+                          //echo strlen($desciption);
+                          $maxlen = $this->helper('onsale')->getMaxWord();
+                          $shortDes = substr($desciption,0,$maxlen).'...';
+                          if($this->helper('onsale')->getDisDescription()==1){
+                            echo '<p>'. $shortDes.'</p>';
+                          }
+                    ?>
+                     
+                     <?php 
+                          $oldPrice = $_product->getPrice(); 
+                          $newPrice = $_product->getSpecialPrice();
+                          if($this->helper('onsale')->getDisPrice()==1){   
+                    ?>
+                        <span style="color:<?php echo $this->helper('onsale')->getPriceColor();?>; font-size:12px; text-decoration:line-through;"><?php echo '$'.$oldPrice.'<br />'; ?></span>
+                        <span style="color:<?php echo $this->helper('onsale')->getPriceColor();?>; font-size:<?php echo $this->helper('onsale')->getPriceFontsize(); ?>px; font-weight:bold;"><?php echo '$'.$newPrice.'<br />'; ?></span>
+                    <?php } ?>
+                    <?php if($this->helper('onsale')->getEnableAddToCard()==1){ ?>
+						<span class="addcart <?php echo $this->helper('onsale')->getButtonStyle(); ?>" onclick="setLocation('<?php  echo Mage::helper('checkout/cart')->getAddUrl($_product) ?>')">
+							<span class="addcartcontent" >Add To Cart</span>
+						</span>
+                       
+                    <?php }?>
+                </div>
+			</div>
+			<?php if($this->helper('onsale')->getDisListImg()==1): ?>
+			<div class="showcase-thumbnail">
+				<img class="imageshowcase" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(90); ?>" width="90" height="90" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+			</div>
+			<?php endif; ?>
+		</div>
+        <?php endforeach; ?>
+	</div>
+</div>
+<?php } ?>

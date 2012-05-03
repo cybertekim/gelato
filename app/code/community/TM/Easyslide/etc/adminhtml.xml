@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <menu>
+        <cms translate="title" module="cms">
+            <children>
+                <items module="easyslide">                        
+                    <title>Easyslide</title>
+                    <sort_order>200</sort_order>
+                    <action>easyslide/adminhtml_easyslide</action>
+                </items>
+            </children>
+        </cms>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <easyslide>
+                        <title>Easyslide Module</title>
+                        <sort_order>200</sort_order>
+                    </easyslide>
+                </children>
+            </admin>
+        </resources>   
+    </acl>
+    <layout>
+        <updates>
+            <easyslide>
+                <file>easyslide.xml</file>
+            </easyslide>
+        </updates>
+    </layout>
+</config>

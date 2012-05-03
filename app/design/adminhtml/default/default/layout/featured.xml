@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <featured_adminhtml_featured_index>
+        <reference name="content">
+            <block type="core/template" name="featured_admin"/>
+        </reference>
+    </featured_adminhtml_featured_index>
+</layout>

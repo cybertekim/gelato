@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <mageex translate="label" module="onsale">
+            <label>Mageex Modules</label>
+            <sort_order>197</sort_order>
+        </mageex>
+    </tabs>
+    <sections>
+		 <onsale translate="label" module="onsale">
+			<label>Onsale Slider Configuration</label>
+            <tab>mageex</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>50</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+			<groups>
+				<silder translate="label">  
+                    <label>Slider configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <en_slide translate="label">
+                            <label>Enable Slider</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </en_slide>
+                        <en_label translate="label">
+                            <label>Enable Onsale Label</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </en_label>
+                        
+						 <img_label translate="label">
+                            <label>On Sales Label Image</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">onsale</upload_dir> 
+                            <base_url type="media" scope_info="1">onsale</base_url>             
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Browse your images for on sales label images]]></comment>
+                        </img_label> 
+                        <dis_border translate="label">
+                            <label>Display Slider Border</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </dis_border>
+                        <slider_border_color translate="label">
+                            <label>Slider Border Color</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[color code or color name]]></comment>
+                        </slider_border_color>
+                        <max_count translate="label">
+                            <label>Max Product Count</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[promotion product number are shown]]></comment>
+                        </max_count>
+                        <bt_style translate="label">
+                            <label>Button Style</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onsale/system_config_source_BStyle</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </bt_style>
+                        <en_auto translate="label">
+                            <label>Enable Auto Slider</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </en_auto>
+                        <slide_duration translate="label">
+                            <label>Slide Duration</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[seconds]]></comment>
+                        </slide_duration>
+                        <slider_effect translate="label">
+                            <label>Slider Effect</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onsale/system_config_source_SEffect</source_model>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </slider_effect>
+                    </fields>
+                </silder>
+                <pro_settings translate="label">
+        	          <label>Product information Settings</label>
+        	          <sort_order>100</sort_order>
+        	          <show_in_default>1</show_in_default>
+        	          <show_in_website>1</show_in_website>
+        	          <show_in_store>1</show_in_store>
+        	          <fields>
+            	            <image_size translate="label">
+            	              <label>Product Image Size</label>
+            	              <frontend_type>text</frontend_type>
+            	              <sort_order>1</sort_order>
+            	              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+            	              <show_in_store>1</show_in_store>
+            	            </image_size>
+                            <dis_name translate="label">
+            	              <label>Display Product Name</label>
+            	              <frontend_type>select</frontend_type>
+            	              <source_model>adminhtml/system_config_source_yesno</source_model>
+            	              <sort_order>2</sort_order>
+            	              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+            	              <show_in_store>1</show_in_store>
+            	            </dis_name>
+                            <name_size translate="label">
+            	              <label>Font Size Of Product Name</label>
+            	              <frontend_type>text</frontend_type>
+            	              <sort_order>3</sort_order>
+            	              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+            	              <show_in_store>1</show_in_store>
+                              <comment><![CDATA[pixel]]></comment>
+            	            </name_size>
+                            <name_color translate="label">
+            	              <label>Product Name Text Color</label>
+            	              <frontend_type>text</frontend_type>
+            	              <sort_order>4</sort_order>
+            	              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+            	              <show_in_store>1</show_in_store>
+                              <comment><![CDATA[color code or color name]]></comment>
+            	            </name_color>
+                            <dis_description translate="label">
+            	              <label>Display Product Description</label>
+            	              <frontend_type>select</frontend_type>
+            	              <source_model>adminhtml/system_config_source_yesno</source_model>
+            	              <sort_order>5</sort_order>
+            	              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+            	              <show_in_store>1</show_in_store>
+            	            </dis_description>
+                            <max_word translate="label">
+            	              <label>Product Description Max Word Count</label>
+            	              <frontend_type>text</frontend_type>
+            	              <sort_order>6</sort_order>
+            	              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+            	              <show_in_store>1</show_in_store>
+                              <comment><![CDATA[characters]]></comment>
+            	            </max_word>
+                            <dis_price translate="label">
+            	              <label>Display Product Price</label>
+            	              <frontend_type>select</frontend_type>
+            	              <source_model>adminhtml/system_config_source_yesno</source_model>
+            	              <sort_order>7</sort_order>
+            	              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+            	              <show_in_store>1</show_in_store>
+            	            </dis_price>
+                            <price_fontsize translate="label">
+            	              <label>Price Text Font Size</label>
+            	              <frontend_type>text</frontend_type>
+            	              <sort_order>8</sort_order>
+            	              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+            	              <show_in_store>1</show_in_store>
+                              <comment><![CDATA[pixel]]></comment>
+            	            </price_fontsize>
+                             <price_color translate="label">
+            	              <label>Price Text Color</label>
+            	              <frontend_type>text</frontend_type>
+            	              <sort_order>9</sort_order>
+            	              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+            	              <show_in_store>1</show_in_store>
+                              <comment><![CDATA[color code or color name]]></comment>
+            	            </price_color>
+                            <en_button translate="label">
+            	              <label>Enable Add to Cart Button</label>
+            	              <frontend_type>select</frontend_type>
+            	              <source_model>adminhtml/system_config_source_yesno</source_model>
+            	              <sort_order>10</sort_order>
+            	              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+            	              <show_in_store>1</show_in_store>
+            	            </en_button>
+                      
+                            <dis_list translate="label">
+            	              <label>Display List Slider</label>
+            	              <frontend_type>select</frontend_type>
+            	              <source_model>adminhtml/system_config_source_yesno</source_model>
+            	              <sort_order>12</sort_order>
+            	              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+            	              <show_in_store>1</show_in_store>
+            	            </dis_list>
+        	          </fields>
+    	        </pro_settings>
+			</groups>
+		</onsale>
+    </sections>
+</config>

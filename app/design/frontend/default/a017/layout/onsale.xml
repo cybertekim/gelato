@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">     
+<!-- <onsale_index_index> -->
+    <default>  
+		<reference name="head">	
+          	<action method="addJs"><script>onsale/jquery.min.js</script></action>
+			<action method="addJs"><script>onsale/jquery-noconflict.js</script></action>
+            <action method="addJs"><script>onsale/jquery.aw-showcase.js</script></action>
+			<action method="addCss"><script>css/onsale.css</script></action>           
+        </reference>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="onsale/onsale" name="onsale" template="onsale/onsale.phtml" />
+        </reference>
+	</default>
+<!-- </onsale_index_index> -->
+</layout> 

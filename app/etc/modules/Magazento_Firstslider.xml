@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Magazento_Firstslider>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Magazento_Firstslider>
+    </modules>
+</config>

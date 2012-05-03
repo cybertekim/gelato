@@ -1,0 +1,13 @@
+Blocks from Custom Branding      
+
+from CMS > Home Page > Design
+
+<block type="highlight/review_new" name="recent_review" template="highlight/review/listing.list.phtml">
+   <action method="setProductsCount"><count>1</count></action>
+   <action method="setTitle"><title>Recent review</title></action>
+</block>
+
+<block type="highlight/product_featured" name="featured_product" template="highlight/product/listing.list.phtml">
+    <action method="setProductsCount"><count>1</count></action>
+    <action method="setTitle"><title>Custom Branding</title></action>
+  </block>

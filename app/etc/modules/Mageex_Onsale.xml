@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Mageex_Onsale>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Mageex_Onsale>
+    </modules>
+</config> 
